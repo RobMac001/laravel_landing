@@ -29,7 +29,7 @@
 
     
 
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/d31b6d10c1.js" crossorigin="anonymous"></script>
 
