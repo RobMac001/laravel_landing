@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('inicio');
 });
+
+
+
+Route::post('/subscribers/registro', 'App\Http\Controllers\SubscribersController@store')->name('subscribers.store');
