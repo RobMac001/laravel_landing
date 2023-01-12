@@ -33,12 +33,42 @@
 
   <script src="https://kit.fontawesome.com/d31b6d10c1.js" crossorigin="anonymous"></script>
 
-  <!-- =======================================================
-  * Template Name: Gp - v4.9.1
-  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+   
+
+   <!-- Include script -->
+   <script type="text/javascript">
+   function callbackThen(response) {
+
+     // read Promise object
+     response.json().then(function(data) {
+       console.log(data);
+       if(data.success && data.score >= 0.6) {
+          console.log('valid recaptcha');
+       } else {
+          document.getElementById('contactForm').addEventListener('submit', function(event) {
+             event.preventDefault();
+             alert('recaptcha error');
+          });
+       }
+     });
+   }
+
+   function callbackCatch(error){
+      console.error('Error:', error)
+   }
+   </script>
+
+   {!! htmlScriptTagJsApi([
+      'callback_then' => 'callbackThen',
+      'callback_catch' => 'callbackCatch',
+   ]) !!}
+   
+   <style>
+       .back-to-top{
+           left:15px!important;
+       }
+   </style>
 </head>
 
 <body>
@@ -47,31 +77,31 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">Mi<span>.</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+     <!-- <h1 class="logo me-auto me-lg-0"><a href="index.html">Mi<span>.</span></a></h1>-->
+     
+       <a href="#" class="logo me-auto me-lg-0"><img src="assets/img/mittum-white-logo.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
+          <li><a class="nav-link scrollto active" href="#">Inicio</a></li>
           <li><a class="nav-link scrollto" href="#about">Sobre nosotros</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Compañia</a></li>
-          <li class="dropdown"><a href="#"><span>Email Marketing</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto " href="#counts">Clientes</a></li>
+          <!--<li class="dropdown"><a href="#"><span>Email Marketing</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Email Marketing</a></li>
               <li><a href="#">Datos Email Marketing</a></li>
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
             </ul>
-          </li>
-          <li><a class="nav-link scrollto " href="#portfolio">Agencias</a></li>
+          </li>-->
+         <!-- <li><a class="nav-link scrollto " href="#portfolio">Agencias</a></li>-->
           <li><a class="nav-link scrollto" href="#team">Recursos</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Blog</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#about" class="get-started-btn scrollto">Login</a>
+      <!--<a href="#about" class="get-started-btn scrollto">Login</a>-->
 
     </div>
   </header><!-- End Header -->
@@ -82,12 +112,16 @@
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-          <h1>Powerful Digital Solutions With Gp<span>.</span></h1>
-          <h2>Compatible con:</h2>
+          <h1>La seguridad de la información </h1>
+          <h2>debe de ser una de las primeras cosas a tomar en cuenta al gestionar tus campañas de email marketing. <br/>Envía, mide los resultados y optimiza tus campañas de una manera rápida y sencilla, teniendo la infraestructura dentro de territorio nacional. </h2>
+          
+          <h2>¿Buscas experiencia y seguridad?<br/><br/></h2>
+            
+            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Solicita una demo aquí</a>
         </div>
       </div>
 
-      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+     <!-- <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
         <div class="col-xl-2 col-md-4">
           <div class="icon-box">
             <i class="ri-google-fill"></i>
@@ -120,7 +154,7 @@
             <h3><a href="">PrestaShop</a></h3>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </section><!-- End Hero -->
@@ -157,6 +191,80 @@
 
       </div>
     </section><!-- End About Section -->
+    
+    
+    
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3>MITTUM</h3>
+          <p> Envía, mide los resultados y optimiza tus campañas de una manera sencilla. Cuida la seguridad de tu información. </p>
+          <a class="cta-btn" href="#">Quiero Empezar</a>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+     <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row no-gutters">
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
+          <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
+            <div class="content d-flex flex-column justify-content-center">
+              <h3>Colaboración total. </h3>
+              <p>
+               Instituciones Bancarias, Aseguradoras y grupos de Afores confían en nosotros para poder distribuir su información con los más altos estándares de seguridad de la información. 
+              </p>
+               <p>
+               Millones de correos entregados en bandeja de nuestros clientes nos respaldan.
+              </p>
+               <p>
+              ¿Buscas una asesoría con los expertos?
+ 
+              </p>
+              <div class="row">
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-emoji-smile"></i>
+                   
+                    <p><strong>Ayudamos a entidades financieras en la gestión de sus campañas de email marketing.</strong> Somos especialistas en el cumplimiento de las auditorías de seguridad de la información, gracias a que nuestra infraestructura, la cual se encuentra en territorio nacional. </p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-journal-richtext"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="2" class="purecounter"></span>
+                    <p><strong>Millones de correos entregados</strong>  en bandeja de nuestros clientes nos respaldan.</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-clock"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="4" class="purecounter"></span>
+                    <p><strong>Más de 10 años sumando esfuerzos</strong> con las principales instituciones financieras en México y Latinoamérica en materia de Email Marketing.</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="bi bi-award"></i>
+                    
+                    <p><strong>Nuestros equipos dedicados marcan una gran diferencia</strong>, en la operación de cualquier línea de negocio.  
+</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
@@ -164,23 +272,34 @@
 
         <div class="clients-slider swiper">
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/Banco_de_Chile_Logo.png" class="img-fluid" alt=""></div>
+        
+            <div class="swiper-slide"><img src="assets/img/clients/Citibanamex-logo.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/logo_sccp.png" class="img-fluid" alt=""></div>
+             <div class="swiper-slide"><img src="assets/img/clients/Chubb-logo.png" class="img-fluid" alt=""></div>
+          
           </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
     </section><!-- End Clients Section -->
+    
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3>¿Buscas una asesoría con los expertos?</h3>
+          
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+     <!-- ======= Counts Section ======= -->
 
     <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
+    <!--<section id="features" class="features">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -210,10 +329,10 @@
         </div>
 
       </div>
-    </section><!-- End Features Section -->
+    </section>--><!-- End Features Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
+    <!--<section id="services" class="services">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -273,23 +392,11 @@
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+    </section>--><!-- End Services Section -->
 
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="text-center">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn" href="#">Call To Action</a>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+   <!-- <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -439,62 +546,12 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section>--><!-- End Portfolio Section -->
 
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row no-gutters">
-          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
-          <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
-            <div class="content d-flex flex-column justify-content-center">
-              <h3>Voluptatem dignissimos provident quasi</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
-              <div class="row">
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-emoji-smile"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2" class="purecounter"></span>
-                    <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2" class="purecounter"></span>
-                    <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-clock"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="4" class="purecounter"></span>
-                    <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-award"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="4" class="purecounter"></span>
-                    <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End .content-->
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
+   
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+   <!--  <section id="testimonials" class="testimonials">
       <div class="container" data-aos="zoom-in">
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -511,73 +568,18 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
+            </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section>--><!-- End Testimonials Section -->
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Team</h2>
-          <p>Check our Team</p>
+          <h2>EQUIPO</h2>
+          <p>CONOCE NUESTRO EQUIPO</p>
         </div>
 
         <div class="row">
@@ -594,7 +596,7 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Walter White</h4>
+                <h4>Pedro Abad</h4>
                 <span>Chief Executive Officer</span>
               </div>
             </div>
@@ -612,7 +614,7 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Sarah Jhonson</h4>
+                <h4>Berenice Ruiz</h4>
                 <span>Product Manager</span>
               </div>
             </div>
@@ -630,7 +632,7 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>William Anderson</h4>
+                <h4>Raul Ramirez</h4>
                 <span>CTO</span>
               </div>
             </div>
@@ -648,7 +650,7 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Amanda Jepson</h4>
+                <h4>Paola Camarillo</h4>
                 <span>Accountant</span>
               </div>
             </div>
@@ -664,12 +666,12 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Contact</h2>
-          <p>Contact Us</p>
+          <h2>Contacto</h2>
+          <p>Ponte en contacto con nosotros</p>
         </div>
 
         <div>
-          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255.331516300161!2d-99.18794311424885!3d19.43537941300278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2021d4faf7b93%3A0x38ad4cc24ecf7d51!2sElogia%20-%20Agencia%20de%20Marketing%20Digital!5e0!3m2!1ses!2smx!4v1672422424638!5m2!1ses!2smx" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="row mt-5">
@@ -678,19 +680,19 @@
             <div class="info">
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <h4>Ubicación:</h4>
+                <p>Polanco, Ciudad de Mexico</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com</p>
+                <p>info@mittum.com</p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
+                <h4>Tel:</h4>
                 <p>+1 5589 55488 55s</p>
               </div>
 
@@ -700,27 +702,107 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{{ route('subscribers.store') }}" method="post" role="form" id="contactForm" class="php-email-form">
+                @csrf
+                <input type="hidden" name="recaptcha" id="recaptcha">
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombre de la empresa*" required>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                 <div class="col-md-6 form-group">
+                  <input type="text" name="web" class="form-control" id="name" placeholder="¿Cuál es la web de tu empresa?*" required>
                 </div>
+                <div class="col-md-6 form-group">
+                 
+                  <select class="form-select form-control" aria-label="Sector" name="sector" >
+  <option selected disabled>Sector</option>
+ 
+ 
+  <option label="" value=""></option>
+  <option label="Administración Pública" value="Administración Pública">Administración Pública</option>
+  <option label="Automoción" value="Automoción">Automoción</option>
+  <option label="B2B" value="B2B">B2B</option>
+  <option label="Beauty" value="Beauty">Beauty</option>
+  <option label="CPG " value="CPG">CPG </option>
+  <option label="Educación" value="Educación">Educación</option>
+  <option label="Entertaiment" value="Entertaiment">Entertaiment</option>
+  <option label="Finanzas, Banca, Fintec" value="Finanzas, Banca, Fintec">Finanzas, Banca, Fintec</option>
+  <option label="Health &amp; Pharma" value="Health &amp; Pharma">Health &amp; Pharma</option>
+  <option label="Hosteleria &amp; Turismo" value="Hosteleria &amp; Turismo">Hosteleria &amp; Turismo</option>
+  <option label="Luxury" value="Luxury">Luxury</option>
+  <option label="Moda" value="Moda">Moda</option>
+  <option label="ONG" value="ONG">ONG</option>
+  <option label="Otros" value="Otros">Otros</option>
+  <option label="Retail" value="Retail">Retail</option>
+  <option label="Seguros" value="Seguros">Seguros</option>
+
+</select>
+                </div>
+                 <div class="col-md-6 form-group">
+                  <input type="text" name="pais" class="form-control"  placeholder="País/región*" required>
+                </div>
+                <div class="col-md-6 form-group">
+              
+                  <select class="form-select form-control" aria-label="Presupuesto" name="presupuesto" >
+  <option selected disabled>Presupuesto</option>
+ 
+  <option label="Entre 10.000€ y 30.000€" value="Entre 10.000€ y 30.000€">Entre 10.000€ y 30.000€</option>
+  <option label="Entre 30.000€ y 80.000€" value="Entre 30.000€ y 80.000€">Entre 30.000€ y 80.000€</option>
+  <option label="Más de 80.000€" value="Más de 80.000€">Más de 80.000€</option>
+
+</select>
+                </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Tu Email*" required>
+                </div>
+           
+                
+              
+              </div>
+                <div class="form-group mt-3">
+               
+                 <select class="form-select form-control" aria-label="Objetivo Principal" name="objetivo" required>
+  <option selected disabled>Objetivo Principal*</option>
+   <option label="Awareness" value="Awareness">Awareness</option>
+  <option label="Branding" value="Branding">Branding</option>
+  <option label="Conversiones" value="Conversiones">Conversiones</option>
+  <option label="Fidelización" value="Fidelización">Fidelización</option>
+  <option label="Interacciones" value="Interacciones">Interacciones</option>
+  <option label="Leads" value="Leads">Leads</option>
+  <option label="Otros" value="Otros">Otros</option>
+  <option label="Performance Mkt" value="Performance Mkt">Performance Mkt</option>
+  <option label="Tráfico" value="Tráfico">Tráfico</option>
+  <option label="Ventas" value="Ventas">Ventas</option>
+</select>
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+           
+                 <textarea class="form-control" name="problema_actual" rows="5" placeholder="Problema Actual" ></textarea>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            
+                <textarea class="form-control" name="otros_objetivo" rows="5" placeholder="Otros objetivos" ></textarea>
+              </div>
+         
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="publico_objetivo"  placeholder="Publico Objetivo" >
+              </div>
+                <div class="form-group mt-3">
+                <input type="text" class="form-control" name="competencia"  placeholder="Competencia" > 
+              </div>
+               <div class="form-group mt-3">
+                <input type="text" class="form-control" name="metas_kpis"  placeholder="Metas & KPIs" > 
+              </div>
+             
+               <div class="form-group mt-3">
+                <textarea class="form-control" name="informacion_adicional" rows="5" placeholder="Información Adicional" ></textarea>
               </div>
               <div class="my-3">
-                <div class="loading">Loading</div>
+                <div class="loading">Enviando</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="sent-message">¡Tu mensaje ha sido enviado!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit">Enviar</button></div>
             </form>
 
           </div>
@@ -740,12 +822,12 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>Gp<span>.</span></h3>
+              <h3><img src="assets/img/mittum-white-logo.png" alt="" class="img-fluid"></h3>
               <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
+                Polanco, Ciudad de Mexico <br>
+                <br><br>
+                <strong>Tel:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@mittum.com<br>
               </p>
               <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -758,32 +840,31 @@
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Acerca de nosotros</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Servicios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos y condiciónes</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Politica de Privacidad</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Nuestros Servicios</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Email Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Auditorias</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Gestión de campañas</a></li>
+             
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <h4>Newsletter</h4>
+            <p>Subscríbete a nuestro Newsletter para estar informado</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              <input type="email" name="email"><input type="submit" value="Subscribirme">
             </form>
 
           </div>
@@ -794,14 +875,14 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Mittum</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+       
       </div>
     </div>
   </footer><!-- End Footer -->
