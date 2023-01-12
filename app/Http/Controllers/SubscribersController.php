@@ -82,7 +82,7 @@ $validator = Validator::make($request->all(), [
 	}else{return 'fail';}
        }
 
-
+/* aqui termina todo */
 			
 
     }
