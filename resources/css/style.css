@@ -155,7 +155,7 @@ h6 {
 }
 
 #header .logo a span {
-  color: #0096a5;
+  color: #0ea500;
 }
 
 #header .logo img {
@@ -416,7 +416,7 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/job-ge9134aa79_1920.jpg") top center;
+  background: url("../img/hero-bg.jpg") top center;
   background-size: cover;
   position: relative;
 }
@@ -442,12 +442,12 @@ h6 {
   font-size: 56px;
   font-weight: 700;
   line-height: 64px;
-  color: #fff;
+  color: #0ea500;
   font-family: "Poppins", sans-serif;
 }
 
 #hero h1 span {
-  color: #00e1ff;
+  color: #0ea500;
 }
 
 #hero h2 {

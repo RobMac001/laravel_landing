@@ -367,7 +367,7 @@ h6 {
 .navbar-mobile .active,
 .navbar-mobile li:hover>a {
   color: #151515;
-  background-color: #00e1ff;
+  background-color: #0ea500;
 }
 
 .navbar-mobile .getstarted,
@@ -581,7 +581,7 @@ section {
   font-size: 20px;
   left: 0;
   top: -3px;
-  color: #ffc451;
+  color: #0096a5;
 }
 
 .about .content p:last-child {
@@ -750,9 +750,9 @@ section {
 }
 
 .cta .cta-btn:hover {
-  background: #ffc451;
-  border-color: #ffc451;
-  color: #151515;
+  background: #0096a5;
+  border-color: #0096a5;
+  color: #fff;
 }
 
 /*--------------------------------------------------------------

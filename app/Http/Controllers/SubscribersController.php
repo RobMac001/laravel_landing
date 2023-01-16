@@ -76,10 +76,20 @@ $validator = Validator::make($request->all(), [
       "informacion_adicional" => $request->informacion_adicional,
         
     ]);
+    
 
 	if($inserted){
+	    
+    $client = new \GuzzleHttp\Client();
+$response = $client->get('https://eu.mittum.com/ws/e?&CID=522628&PK=0&email='. $request->email . '&nombre=' . $request->name);
+
+//echo $response->getStatusCode();
+//echo $response->getBody();
 	    return 'OK';
 	}else{return 'fail';}
+	
+	   
+
        }
 
 /* aqui termina todo */
